@@ -15,17 +15,15 @@ for i in range(ITERATIONS):
     # the player chooses at random
     choice = random.randint(0, 2)
 
-    # "reveal" a goat (not the fastest algorithm, but easy to understand)
-    revealed = -1
-    while revealed != choice and revealed != car:
-        revealed = random.randint(0, 2)
+    # It turns out that making a revelation here only collapses the algorithm
+    # to this, making the outcome obvious!  There is no need even to run this
+    # simulation!
 
     # switch if configured to do so
-    if SWITCH:
-        choice = 3 - revealed - choice  # it works, trust me
-
-    # tally
     if choice == car:
+        if not SWITCH:
+            wins += 1
+    elif SWITCH:
         wins += 1
 
 print(f'Fraction of wins: {wins / ITERATIONS}')
